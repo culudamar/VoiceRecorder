@@ -1,8 +1,8 @@
 [versions]
 kotlin = "2.0.21"
 androidGradle = "8.7.2"
-kotlinxKsp = "2.0.21-1.0.27"
-composeBom = "2024.10.01"
+kotlinxKsp = "2.0.21-1.0.28"
+composeBom = "2024.11.00"
 androidxActivity = "1.9.3"
 androidxComposeAlpha = "1.7.0-rc01"
 androidxCore = "1.15.0"
@@ -26,7 +26,7 @@ timberLogger = "5.0.1"
 junit4 = "4.13.2"
 espresso-core = "3.6.1"
 detekt = "1.23.7"
-kotlinter = "4.4.1"
+kotlinter = "4.5.0"
 
 [libraries]
 #UI
