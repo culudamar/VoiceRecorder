@@ -20,6 +20,7 @@ kotlinxSerialization = "1.7.3"
 kotlinxCoroutines = "1.9.0"
 androidxMedia3 = "1.4.1"
 material = "1.12.0"
+guava = "31.1-android"
 hiltNavigationCompose = "1.2.0"
 hiltAndroid = "2.52"
 timberLogger = "5.0.1"
@@ -62,6 +63,7 @@ androidx-datastore = { group = "androidx.datastore", name = "datastore-preferenc
 androidx-media = { group = "androidx.media", name = "media", version.ref = "androidxMedia" }
 androidx-media3-exoPlayer = { group = "androidx.media3", name = "media3-exoplayer", version.ref = "androidxMedia3" }
 androidx-media3-mediasession = { group = "androidx.media3", name = "media3-session", version.ref = "androidxMedia3" }
+androidx-media3-common = { group = "androidx.media3", name = "media3-common", version.ref = "androidxMedia3" }
 #
 androidx-coreKtx = { group = "androidx.core", name = "core-ktx", version.ref = "androidxCore" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppcompat" }
@@ -75,6 +77,8 @@ timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "tim
 hilt-navigationCompose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hiltAndroid" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hiltAndroid" }
+#guava
+guava = { group = "com.google.guava", name = "guava", version.ref = "guava" }
 #Test
 junit4 = { group = "junit", name = "junit", version.ref = "junit4" }
 androidx-test-extJunit = { group = "androidx.test.ext", name = "junit", version.ref = "androidxTestExtJunit" }

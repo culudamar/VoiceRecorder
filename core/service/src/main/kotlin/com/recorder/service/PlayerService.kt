@@ -1,10 +1,12 @@
 package com.recorder.service
 
 import androidx.media3.common.MediaItem
+import androidx.media3.common.MediaMetadata
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.session.LibraryResult
 import androidx.media3.session.MediaLibraryService
 import androidx.media3.session.MediaSession
+import com.google.common.collect.ImmutableList
 import com.google.common.util.concurrent.Futures
 import com.google.common.util.concurrent.ListenableFuture
 import dagger.hilt.android.AndroidEntryPoint
@@ -53,6 +55,36 @@ class PlayerService : MediaLibraryService() {
             }
             return Futures.immediateFuture(mediaItems)
         }
+        override fun onGetLibraryRoot(session: MediaLibrarySession, browser: MediaSession.ControllerInfo, params: LibraryParams?): ListenableFuture<LibraryResult<MediaItem>> {
+            return Futures.immediateFuture(LibraryResult.ofItem(rootItem, params))
+        }
+        override fun onGetChildren(
+            session: MediaLibrarySession, browser: MediaSession.ControllerInfo,
+            parentId: String, page: Int, pageSize: Int, params: LibraryParams?
+        ): ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> {
+
+            return Futures.immediateFuture(
+                LibraryResult.ofItemList(
+                    ImmutableList.of<MediaItem>(),
+                    params
+                )
+            )
+        }
+        override fun onGetSearchResult(
+            session: MediaLibrarySession, browser: MediaSession.ControllerInfo,
+            query: String,
+            page: Int,
+            pageSize: Int,
+            params: LibraryParams?
+        ): ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> {
+
+            return Futures.immediateFuture(
+                LibraryResult.ofItemList(
+                    ImmutableList.of<MediaItem>(),
+                    params
+                )
+            )
+        }
     }
 
     override fun onCreate() {
@@ -77,4 +109,19 @@ class PlayerService : MediaLibraryService() {
             release()
         }
     }
+
+    /** This is the root item that is parent to our playlist.
+     *  It is necessary to have a parent item otherwise there is no "library" */
+    val rootItem = MediaItem.Builder()
+        .setMediaId("my_root_node")
+        .setMediaMetadata(
+            MediaMetadata.Builder()
+                .setIsBrowsable(false)
+                .setIsPlayable(false)
+                .setMediaType(MediaMetadata.MEDIA_TYPE_FOLDER_MIXED)
+                .setTitle("MyVoieRecorderAppRootWhichIsNotVisibleToControllers")
+                .build()
+        )
+        .build()
+
 }

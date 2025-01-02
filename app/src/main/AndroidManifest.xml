@@ -25,6 +25,8 @@
         android:roundIcon="@drawable/baseline_keyboard_voice_24"
         android:supportsRtl="true"
         android:theme="@style/VoiceRecorder.Theme.Splash">
+        <meta-data android:name="com.google.android.gms.car.application"
+            android:resource="@xml/automotive_app_desc"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -34,6 +36,9 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.media.action.MEDIA_PLAY_FROM_SEARCH" />
+            </intent-filter>
         </activity>
 
         <service
@@ -42,12 +47,11 @@
             android:foregroundServiceType="microphone"/>
         <service
             android:name="com.recorder.service.PlayerService"
-            android:exported="false"
+            android:exported="true"
             android:foregroundServiceType="mediaPlayback">
             <intent-filter>
                 <action android:name="androidx.media3.session.MediaLibraryService" />
-                <!-- for compatibility -->
-                <action android:name="androidx.media3.browser.MediaBrowserService" />
+                <action android:name="android.media.browse.MediaBrowserService" />
             </intent-filter>
         </service>
     </application>

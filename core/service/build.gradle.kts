@@ -37,6 +37,8 @@ dependencies {
 
     api(libs.androidx.media3.exoPlayer)
     api(libs.androidx.media3.mediasession)
+    api(libs.androidx.media3.common)
+    implementation(libs.guava)
 
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
